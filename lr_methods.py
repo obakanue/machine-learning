@@ -2,12 +2,14 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def read_tsv(file_path):
     observations = open(file_path).read().strip().split('\n')
     observations = [[1] + list(map(float, obs.split())) for obs in observations]
     X = [obs[:-1] for obs in observations]
     y = [obs[-1] for obs in observations]
     return X, y
+
 
 def batch_gdescent(X, y, alpha, w, epochs=500):
     alpha = alpha/len(X)
@@ -18,8 +20,6 @@ def batch_gdescent(X, y, alpha, w, epochs=500):
         w = w + alpha * gradient
         if np.linalg.norm(w - w_old) / np.linalg.norm(w) < 0.0005:      # From Pierres code in order to break if batch
             break                                                       # gradient descent is done before epochs
-
-
     return w
 
 
