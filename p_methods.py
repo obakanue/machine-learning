@@ -98,7 +98,9 @@ def plot_perceptron(X, w, alpha, *args):
     X_en = np.array([x for x in filter(lambda X: X[3] == 0, X)])
     X_fr = np.array([x for x in filter(lambda X: X[3] == 1, X)])
     x_axis = np.array(X)[:,1]
-    plt.plot(x_axis, abs(w[1]) * x_axis + w[0], '-', label='Line')
+    slope = -(w[0] / w[2]) / (w[0] / w[1])
+    intercept = -w[0] / w[2]
+    plt.plot(x_axis, slope * x_axis + intercept, '-', label='Line')
     plt.scatter(X_en[:,1], X_en[:,2], marker='o', label='English, 0', color='Blue')
     plt.scatter(X_fr[:,1], X_fr[:,2], marker='o', label='French, 1', color='Red')
     language = "French"

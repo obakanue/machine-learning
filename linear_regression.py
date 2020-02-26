@@ -5,11 +5,11 @@ from lr_methods import *
 
 
 def main():
-    X_en, y_en = read_tsv('/Users/sofiflink/Skola/Pågående Kurser/Artificiell Intelligens EDAP01/machine-learning/salammbo_a_en.tsv')
-    X_fr, y_fr = read_tsv('/Users/sofiflink/Skola/Pågående Kurser/Artificiell Intelligens EDAP01/machine-learning/salammbo_a_fr.tsv')
+    X_en, y_en = read_tsv('salammbo_a_en.tsv')
+    X_fr, y_fr = read_tsv('salammbo_a_fr.tsv')
     X_en, y_en = numpy_array(X_en, y_en) 
     X_fr, y_fr = numpy_array(X_fr, y_fr)
-    alpha_values = [1.0, 0.2, 0.1, 0.05, 1.4, 1.5]
+    alpha_values = [1.5, 1.4, 1.0, 0.2, 0.1, 0.05]
 
     print("######################### Normalizing - English ##########################")
     X_en[:,1], y_en = normalize(X_en[:,1], y_en)
