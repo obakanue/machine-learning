@@ -19,14 +19,14 @@ def looc(matrix, alpha):
         print(f"Prediction: {_} class: {evaluation_sample[3]}")
         print("Right: ", right)
         print("Missclassified count: ", missclassified_eval)
-        # plot_perceptron(matrix, w, alpha, evaluation_sample, i)                       # Uncomment in order to plot every model
+        #plot_perceptron(matrix, w, alpha, evaluation_sample, i)                       # Uncomment in order to plot every model
         print(f"########################### Evaluation ##########################")
         print(f"Missclassification: {missclassified_eval / tries}%")
     return w
 
 
 def read_libsvm():
-    dataset = open('/Users/sofiflink/Skola/Pågående Kurser/Artificiell Intelligens EDAP01/machine-learning/salammbo_a_binary.libsvm').read().strip().split('\n')
+    dataset = open('salammbo_a_binary.libsvm').read().strip().split('\n')
     observations = [dataset[i].split() for i in range(len(dataset))]
     y = [float(obs[0]) for obs in observations]
     X = [['0:1'] + obs[1:] for obs in observations]
@@ -85,11 +85,9 @@ def update_step(matrix, w, alpha, predictions):
 def train_weights(matrix, w, alpha):
     nbr_right = 0
     counter = 0
-    nbr_right, predictions, count = predict(matrix, w)
-    counter += count
     while nbr_right < len(matrix):
-        w = update_step(matrix, w, alpha, predictions)
         nbr_right, predictions, count = predict(matrix, w)
+        w = update_step(matrix, w, alpha, predictions)
         counter += count
     return w, counter
 

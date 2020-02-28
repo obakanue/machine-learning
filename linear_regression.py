@@ -9,7 +9,7 @@ def main():
     X_fr, y_fr = read_tsv('salammbo_a_fr.tsv')
     X_en, y_en = numpy_array(X_en, y_en) 
     X_fr, y_fr = numpy_array(X_fr, y_fr)
-    alpha_values = [1.5, 1.4, 1.0, 0.2, 0.1, 0.05]
+    alpha_values = [0.1, 0.2, 0.5, 1.0, 1.4]
 
     print("######################### Normalizing - English ##########################")
     X_en[:,1], y_en = normalize(X_en[:,1], y_en)
@@ -17,11 +17,11 @@ def main():
     X_fr[:,1], y_fr = normalize(X_fr[:,1], y_fr)
     
     for alpha in alpha_values:
-        print("Learning rate alpha: ", alpha)
-        # ################### Batch Gradient Descent - English #####################
+        print(f"################## Learning rate alpha={alpha} ##################")
+        #################### Batch Gradient Descent - English #####################
         wb_en = plot_bgd(X_en, y_en, alpha, 500, "Batch gradient descent: Weights (English, alpha: " + str(alpha) + ")")
 
-        # #################### Batch Gradient Descent - French #####################
+        ##################### Batch Gradient Descent - French #####################
         wb_fr = plot_bgd(X_fr, y_fr, alpha, 500, "Batch gradient descent: Weights (French, alpha: " + str(alpha) + ")")
 
     
@@ -31,11 +31,11 @@ def main():
         print("################ Batch Gradient Descent Weights - French #################")
         print(wb_fr)
 
-        # ################## Stochastic Gradient Descent - English  ################
+        ################### Stochastic Gradient Descent - English  ################
         ws_en = plot_sgd(X_en, y_en, alpha, 500, "Stochastic gradient descent: Weights (English, alpha: " + str(alpha) + ")")
 
-        # ################### Stochastic Gradient Descent - French #################
-        ws_fr = plot_sgd(X_fr, y_fr, alpha, 500, "Batch gradient descent: Weights (French, alpha: " + str(alpha)+ ")")
+        #################### Stochastic Gradient Descent - French #################
+        ws_fr = plot_sgd(X_fr, y_fr, alpha, 500, "Stochastic descent: Weights (French, alpha: " + str(alpha)+ ")")
 
         print("############## Stochastic Gradient Descent Weights - English #############")
         print(ws_en)

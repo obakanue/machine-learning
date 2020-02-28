@@ -6,7 +6,7 @@ from p_methods import *
 def main():
     matrix, y = read_libsvm()
     matrix = numpy_hstack(matrix, y)
-    alpha_values = [0.00275, 0.0026]
+    alpha_values = [0.00275, 0.0001]
        
     print("######################### Normalizing ##########################")
     matrix[:,1], matrix[:,2] = normalize(matrix[:,1], matrix[:,2])

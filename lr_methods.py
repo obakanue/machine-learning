@@ -55,8 +55,7 @@ def numpy_array(x_values, y_values):
     return np.array(x_values), np.array([y_values]).T
 
 
-def plot_bgd(x_values
-        , y_values, alpha, epochs, title):
+def plot_bgd(x_values, y_values, alpha, epochs, title):
     w = np.zeros(x_values[1].shape).reshape((-1, 1))
     w = batch_gdescent(x_values, y_values, alpha, w, 500)
     plot_graph(x_values, y_values, alpha, epochs, title, w)
